@@ -1,0 +1,20 @@
+{
+  "name": "דרך הבריאה",
+  "short_name": "דרך הבריאה",
+  "description": "תזונה בריאה - שגרה, ניקוי, ניקוי עמוק",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F5EFE0",
+  "theme_color": "#7A8C5C",
+  "lang": "he",
+  "dir": "rtl",
+  "icons": [
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
