@@ -622,10 +622,9 @@ function renderSideMenu() {
 
 function renderPlanChips() {
   return [
-    { value: null, label: 'הכל' },
-    { value: 1,    label: 'Balance' },
-    { value: 2,    label: 'Clean' },
-    { value: 3,    label: 'Reset' },
+    { value: 1, label: 'Balance' },
+    { value: 2, label: 'Clean' },
+    { value: 3, label: 'Reset' },
   ].map(({ value, label }) => {
     const active = state.plan === value;
     const cfg = value !== null ? PLAN_CONFIG[value] : null;
