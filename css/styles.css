@@ -215,12 +215,12 @@ ul, ol { list-style: none; }
 }
 
 .diary-btn {
-  font-size: 1.3rem;
   width: 36px; height: 36px;
   border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
   transition: background var(--ease);
   flex-shrink: 0;
+  color: #F5EFE0;
 }
 .diary-btn:hover { background: rgba(255, 255, 255, 0.15); }
 
@@ -522,7 +522,22 @@ ul, ol { list-style: none; }
 .diary-nav__btn:hover:not(:disabled) { border-color: var(--primary); color: var(--primary); }
 .diary-nav__btn:disabled { opacity: 0.35; cursor: default; }
 
-.diary-nav__date { font-size: 1rem; font-weight: 600; color: var(--text); }
+.diary-nav__date-label {
+  display: flex; align-items: center; gap: 4px;
+  cursor: pointer;
+  position: relative;
+}
+.diary-nav__date-text {
+  font-size: 1rem; font-weight: 600; color: var(--text);
+  border-bottom: 1px dashed var(--primary);
+  padding-bottom: 1px;
+}
+.diary-date-input {
+  position: absolute; inset: 0; opacity: 0;
+  width: 100%; height: 100%;
+  cursor: pointer;
+  border: none; background: none;
+}
 
 /* Diary content */
 .diary-content { padding: 16px; }
@@ -582,13 +597,17 @@ ul, ol { list-style: none; }
   padding: 24px 20px 20px;
   direction: rtl;
 }
+.daily-menu__greeting {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 4px;
+}
 .daily-menu__date {
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: var(--primary);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  margin-bottom: 6px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-bottom: 10px;
 }
 .daily-menu__title {
   font-size: 1.5rem;

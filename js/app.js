@@ -141,6 +141,14 @@ function renderDailyLunchSlot(lunch) {
     </div>`;
 }
 
+function getDayGreeting() {
+  const h = new Date().getHours();
+  if (h >= 5  && h < 12) return 'בוקר טוב ☀️';
+  if (h >= 12 && h < 17) return 'צהריים טובים 🌿';
+  if (h >= 17 && h < 21) return 'ערב טוב 🌙';
+  return 'לילה טוב ✨';
+}
+
 function renderDailyMenuContent() {
   const menu = getDailyMenu(state.plan);
 
@@ -178,8 +186,9 @@ function renderDailyMenuContent() {
   return `
     <div class="daily-menu fade-in">
       <div class="daily-menu__header">
-        <p class="daily-menu__date">${formatDateHebrew(todayKey())}</p>
-        <h2 class="daily-menu__title">תפריט היום 🌿</h2>
+        <p class="daily-menu__greeting">${getDayGreeting()}</p>
+        <p class="daily-menu__date">${new Date().toLocaleDateString('he-IL', { weekday: 'long', day: 'numeric', month: 'long' })}</p>
+        <h2 class="daily-menu__title">תפריט היום</h2>
         <p class="daily-menu__subtitle">הארוחות המומלצות שלך להיום</p>
       </div>
       <div class="daily-menu__slots">${slots}</div>
@@ -529,7 +538,15 @@ function renderMainView() {
             <span class="brand-bar__slogan">שגרה · ניקוי · ניקוי עמוק</span>
           </div>
         </div>
-        <button class="diary-btn" data-action="open-diary" aria-label="יומן אכילה" title="יומן אכילה">📓</button>
+        <button class="diary-btn" data-action="open-diary" aria-label="יומן אכילה" title="יומן אכילה">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+            <line x1="9" y1="7" x2="15" y2="7"/>
+            <line x1="9" y1="11" x2="15" y2="11"/>
+            <line x1="9" y1="15" x2="13" y2="15"/>
+          </svg>
+        </button>
       </div>
       <div class="main-header__nav">
         <div class="plan-chips">${renderPlanChips()}</div>
@@ -1119,7 +1136,10 @@ function renderDiaryView() {
 
       <div class="diary-nav">
         <button class="diary-nav__btn" data-action="diary-prev">‹</button>
-        <div class="diary-nav__date">${formatDateHebrew(state.diaryDate)}</div>
+        <label class="diary-nav__date-label">
+          <span class="diary-nav__date-text">${formatDateHebrew(state.diaryDate)}</span>
+          <input type="date" class="diary-date-input" value="${state.diaryDate}" max="${todayKey()}">
+        </label>
         <button class="diary-nav__btn" data-action="diary-next" ${isToday ? 'disabled' : ''}>›</button>
       </div>
 
@@ -1169,6 +1189,15 @@ function closeModal(overlay, callback) {
 
 function bindEvents() {
   document.getElementById('app').addEventListener('click', handleAppClick);
+  document.getElementById('app').addEventListener('change', e => {
+    if (e.target.classList.contains('diary-date-input')) {
+      const val = e.target.value;
+      if (val && val <= todayKey()) {
+        state.diaryDate = val;
+        render();
+      }
+    }
+  });
 }
 
 function handleAppClick(e) {
