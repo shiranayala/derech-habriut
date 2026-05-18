@@ -535,7 +535,7 @@ function renderMainView() {
           <img class="brand-bar__icon" src="icons/icon-512.png" alt="דרך הבריאה">
           <div class="brand-bar__text">
             <span class="brand-bar__name">דרך הבריאה</span>
-            <span class="brand-bar__slogan">שגרה · ניקוי · ניקוי עמוק</span>
+            <span class="brand-bar__slogan">איזון · ניקוי · התחדשות</span>
           </div>
         </div>
         <button class="diary-btn" data-action="open-diary" aria-label="יומן אכילה" title="יומן אכילה">
