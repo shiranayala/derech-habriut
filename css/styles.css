@@ -153,6 +153,17 @@ ul, ol { list-style: none; }
   background: var(--surface);
   padding: 8px 14px;
   border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  direction: rtl;
+}
+.plan-chips__label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 /* Hamburger button */

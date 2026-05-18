@@ -549,6 +549,7 @@ function renderMainView() {
         </button>
       </div>
       <div class="main-header__nav">
+        <span class="plan-chips__label">בחירת תכנית</span>
         <div class="plan-chips">${renderPlanChips()}</div>
       </div>
     </header>
